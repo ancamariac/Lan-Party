@@ -3,7 +3,7 @@
 
 int closestPow2(int n) {
     int res = 1;
-    while(res < n) {
+    while (res <= n) {
         res = res * 2;
     }
     return res/2;

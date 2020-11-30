@@ -6,7 +6,7 @@
 
 // data de cerinta:
 class Player {
-protected:
+private:
     std::string firstName;
     std::string secondName;
     int points;

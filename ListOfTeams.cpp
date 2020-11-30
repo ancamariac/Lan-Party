@@ -42,9 +42,9 @@ void ListOfTeams::addTeam(Team team) {
     head = newnode;
 }
 
-void ListOfTeams::printTeamNames(char *argv[]) {
+void ListOfTeams::printTeamNames(ofstream  &rezultate) {
 
-	ofstream rezultate(argv[3]);
+	//ofstream rezultate(argv[3]);
 	// doubly
 	node* ptr;
    	ptr = head;
@@ -52,7 +52,7 @@ void ListOfTeams::printTeamNames(char *argv[]) {
       	rezultate << ptr->team.getName() << "\n";// <<"   "<< fixed << setprecision(2) << ptr->team.initialScore()<<"\n";
       	ptr = ptr->next;
    	}
-   	rezultate.close();
+   	//rezultate.close();
 }
 
 void ListOfTeams::printReverseTeamNames(char *argv[]) {

@@ -12,11 +12,8 @@ Player::Player() {
 	this->points = 0;
 }
 
-Player::Player(std::string _firstName, std::string _secondName, int _points) {
-	this->firstName = _firstName;
-	this->secondName = _secondName;
-	this->points = _points;
-}
+Player::Player(std::string _firstName, std::string _secondName, int _points):
+			  firstName(_firstName), secondName(_secondName), points(_points){}
 
 std::string Player::getFirstName() {
 	return firstName;
@@ -27,5 +24,5 @@ std::string Player::getSecondName() {
 }
 
 int Player::getPoints() {
-	return this->points;
+	return points;
 }

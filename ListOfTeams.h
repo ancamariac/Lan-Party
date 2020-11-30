@@ -21,7 +21,7 @@ class ListOfTeams {
 		~ListOfTeams();
 
 		void addTeam(Team team);
-		void printTeamNames(char *argv[]);
+		void printTeamNames(ofstream  &rezultate);
 		void printReverseTeamNames(char *argv[]);
 		void removeTeam(string name);
 		void removeNodes();

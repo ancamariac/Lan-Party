@@ -7,6 +7,7 @@
 #include <assert.h>
 #include <string>
 #include <cstring>
+#include <iomanip>
 
 using namespace std;
 
@@ -36,8 +37,7 @@ Team Stack::pop() {
     return newNode->res_echipa; 
 }
 
-void Stack::display(char *argv[]) {
-    ofstream rezultate(argv[3]);
+void Stack::display(ofstream& rezultate) {
 
     string s = "                                  -  ";
     int size = s.length();
@@ -53,11 +53,12 @@ void Stack::display(char *argv[]) {
         s = "                                  -  ";
         nume = temp->res_echipa.getName();
         s.replace(0, nume.length(), nume);
-        rezultate << s << temp->res_echipa.initialScore() << "\n";
+        rezultate << s << fixed << setprecision(2) << temp->res_echipa.get_global_score() << "\n";
         temp = temp->next;
     }
 
-    rezultate.close();
+    //rezultate << "\n";
+
 }
 
 int Stack::isEmpty() {

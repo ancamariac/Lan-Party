@@ -20,7 +20,7 @@ class Stack {
       Stack();
       void push(Team echipa);
       Team pop();
-      void display(char *argv[]);
+      void display(ofstream& rezultate);
       int isEmpty();
 };
 
