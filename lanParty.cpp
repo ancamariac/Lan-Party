@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 		case 2: {
 			echipe.printTeamNames(argv);
 			nr_deletes = nr_echipe - closestPow2(nr_echipe);
-			cout<< nr_deletes;
+			//cout<< nr_deletes;
 			for ( int i = 0; i < nr_deletes; i++ ) {
 				echipe.removeNodes(); //eliminarea echipelor
 			}
@@ -86,6 +86,11 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 		case 3: {
+			nr_deletes = nr_echipe - closestPow2(nr_echipe);
+			for ( int i = 0; i < nr_deletes; i++ ) {
+				echipe.removeNodes(); //eliminarea echipelor
+			}
+
 			echipe.printTeamNames(argv);
 			rez <<"\n";
 			nr_echipe_ramase = nr_echipe - nr_deletes;
@@ -98,9 +103,9 @@ int main(int argc, char *argv[]) {
 				rez << "--- ROUND NO:" << i + 1 << "\n";
 				winners = Stack();
 				loosers = Stack();
-				spaces = "                                 -                                 ";
 
-				while ( !isEmpty(teamsQueue) ) {				
+				while ( !isEmpty(teamsQueue) ) {
+					spaces = "                                 -                                 ";				
 					echipa1 = deQueue(teamsQueue);
 					echipa2 = deQueue(teamsQueue);
 					nume1 = echipa1.getName();
@@ -111,9 +116,10 @@ int main(int argc, char *argv[]) {
 					rez << "\n";
 				
 					if ( echipa1.initialScore() > echipa2.initialScore() ) {
+						echipa1.set_global_score();
 						winners.push(echipa1);
 						loosers.push(echipa2);
-						echipa1.set_global_score();
+	
 					} else {
 						winners.push(echipa2);
 						loosers.push(echipa1);
@@ -134,7 +140,7 @@ int main(int argc, char *argv[]) {
 					pop_team = winners.pop();
 					enQueue(teamsQueue, pop_team);
 				}
-			}		
+			}	
 			break;
 		}
 		case 4: {

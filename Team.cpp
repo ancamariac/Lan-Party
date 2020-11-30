@@ -9,7 +9,7 @@ Team::Team() {
 	this->global_score = 0;	
 }
 
-Team::Team(std::string name, int nr_players, int global_score, Player **players) {
+Team::Team(std::string name, int nr_players, float global_score, Player **players) {
 	this->name = name;
 	this->nr_players = nr_players;
 	this->global_score = global_score;
@@ -28,7 +28,7 @@ void Team::set_global_score() {
 	this->global_score += 1;
 }
 
-int Team::get_global_score() {
+float Team::get_global_score() {
 	return global_score;
 }
 

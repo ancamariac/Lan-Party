@@ -49,7 +49,7 @@ void ListOfTeams::printTeamNames(char *argv[]) {
 	node* ptr;
    	ptr = head;
    	while(ptr != NULL) {
-      	rezultate << ptr->team.getName();// <<"   "<< fixed << setprecision(2) << ptr->team.initialScore()<<"\n";
+      	rezultate << ptr->team.getName() << "\n";// <<"   "<< fixed << setprecision(2) << ptr->team.initialScore()<<"\n";
       	ptr = ptr->next;
    	}
    	rezultate.close();
@@ -75,19 +75,31 @@ void ListOfTeams::printReverseTeamNames(char *argv[]) {
 
 // eliminare echipa din lista
 void ListOfTeams::removeTeam(string name) {
-    node* aux = head;
+
+	if (head->team.getName() == name) {
+		node* head_tmp = head;
+		head = head->next;
+		head->prev = NULL;
+		delete head_tmp;
+		return;
+	}
+
+	node* aux = head->next;
+
     while ( aux != NULL ) {
-        aux = aux->next;
-        if (aux->team.getName() == name) {
-            if (aux->prev != NULL) {
-                aux->prev->next = aux->next;
-            }
-            if (aux->next != NULL) {
-                aux->next->prev = aux->prev;
-            }
-            delete aux;
+		//if (aux == NULL) break;
+		if (aux->team.getName() == name) {
+			if (aux->prev != NULL) {
+				aux->prev->next = aux->next;
+			}
+			if (aux->next != NULL) {
+				aux->next->prev = aux->prev;
+			}
+
+			delete aux;
             break;
         }
+		aux = aux->next;
     }
 }
 
@@ -100,7 +112,7 @@ void ListOfTeams::removeNodes() {
 
     while(aux != NULL) {
 
-        if ((float)(aux->team.initialScore()) <= min) {
+        if ((float)(aux->team.initialScore()) < min) {
             min = (float)aux->team.initialScore();
             temp = aux->team.getName();
         }
