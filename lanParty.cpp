@@ -8,6 +8,7 @@
 #include "Queue.h"
 #include "Stack.h"
 #include "utils.h"
+#include "BST.h"
 // include .h uri
 
 using namespace std;
@@ -62,26 +63,20 @@ int main(int argc, char *argv[]) {
 	string nume1, nume2;
 	int size_ = spaces.length(), count = 0;
 
-	switch (sum) {
-	case 1: {
+	if ( sum == 1 ) {
 		echipe.printTeamNames(rez);
-		break;
 	}
-	case 2: {
+	
+	if ( sum >= 2 ) {
 		nr_deletes = nr_echipe - closestPow2(nr_echipe);
 		for (int i = 0; i < nr_deletes; i++) {
 			echipe.removeNodes(); //eliminarea echipelor
 		}
 		echipe.printTeamNames(rez);
-		break;
 	}
-	case 3: {
-		nr_deletes = nr_echipe - closestPow2(nr_echipe);
+
+	if ( sum >= 3 ) {
 		int numRounds = intlog(2, closestPow2(nr_echipe));
-		for (int i = 0; i < nr_deletes; i++) {
-			echipe.removeNodes(); //eliminarea echipelor
-		}
-		echipe.printTeamNames(rez);
 		nr_echipe_ramase = nr_echipe - nr_deletes;
 		// se creaza coada de meciuri
 		Queue* teamsQueue = createQueue(nr_echipe_ramase);
@@ -114,8 +109,6 @@ int main(int argc, char *argv[]) {
 				}
 			}
 
-			/**/
-
 			rez << "\n"; rez << "WINNERS OF ROUND NO:" << i + 1 << "\n";
 			winners.display(rez);
 
@@ -137,22 +130,10 @@ int main(int argc, char *argv[]) {
 				enQueue(teamsQueue, pop_team);
 			}
 		}
-		rez << "\n" << "TOP 8 TEAMS:" << "\n";
-		winnerStack4.display(rez);
-		break;
+		//rez << "\n" << "TOP 8 TEAMS:" << "\n";
+		//winnerStack4.display(rez);
 	}
-	case 4: {
-		//apelare functie cerinta 4
-		break;
-	}
-	case 5: {
-		//apelare functie cerinta 5
-		break;
-	}
-	default: {
-		break;
-	}
-	}
+	
 
 	/*for (int i = 0; i < nr_echipe; i++) {
 		nr_jucatori = 5;
