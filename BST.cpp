@@ -1,39 +1,94 @@
 #include <iostream>
-#include <fstream>
-#include <string>
-#include "BST.h"
-#include "Team.h"
-#include "Queue.h"
-#include <assert.h>
 #include <iomanip>
+#include "BST.h"
+#include <fstream>
+#include "Team.h"
+#include "utils.h"
+#include <string>
+#include <cstring>
 
 using namespace std;
 
-BST::BST(Team echipa) { 
-    team = echipa; 
-    left = right = NULL; 
-} 
+BST::BST() {
+	root = NULL;
+}
 
-BST* BST::insert(BST* root, Team team) { 
-    if ( !root ) { 
-        // daca root e NULL se insereaza primul nod
-        return new BST(team); 
-    } 
-  
-    if (team.get_global_score() > root->team.get_global_score()) { 
-        root->right = insert(root->right, team); 
-    } else { 
-        root->left = insert(root->left, team); 
-    } 
+void BST::insert(Node* nod, Team team) {
+	if ( !nod ) {
+		nod = new Node(team);
+		root = nod;
+    } else {
+		if ( team.get_global_score() < nod->team.get_global_score() ) {
+			if ( !nod->left ) {
+				Node* treeTemp = new Node(team);
+				nod->left = treeTemp;
+			} else {
+				insert(nod->left, team);
+            }
+		} else if ( team.get_global_score() > nod->team.get_global_score() ) {
+			if ( !nod->right ) {
+				Node* treeTemp = new Node(team);
+				nod->right = treeTemp;
+			} else {
+				insert(nod->right, team);
+            }
+            // daca au scoruri egale:
+		} else if ( team.get_global_score() == nod->team.get_global_score() ) {
+            if ( caseInsensitive(team.getName(), nod->team.getName()) > 0 ) {
+                if ( !nod->right ) {
+				    Node* treeTemp = new Node(team);
+				    nod->right = treeTemp;
+			    } else 
+				    insert(nod->right, team);
+            } else {
+                if ( !nod->left ) {
+                    Node* treeTemp = new Node(team);
+                    nod->left = treeTemp;
+                } else {
+                    insert(nod->left, team);
+                }
+            }
+        }
+	}
+}
 
-    return root; 
-} 
+void BST::deleteBST(Node* nod) {
+	if ( !nod ) {
+		return;
+    }
 
-void BST::printBST(BST* root) { 
-    if ( !root ) { 
-        return; 
-    } 
-    printBST(root->right); 
-    cout << root->team.get_global_score() << endl; 
-    printBST(root->right); 
-} 
+	Node* curNod = nod;
+	Node* leftNod = nod->left;
+	Node* rightNod = nod->right;
+	delete(curNod);
+	deleteBST(leftNod);
+	deleteBST(rightNod);
+}
+
+BST::~BST() {
+	deleteBST(root);
+}
+
+
+void BST::printTeams(Node* nod, ofstream  &rezultate) {
+	if ( !nod ) {
+		return;
+    }
+	printTeams(nod->right, rezultate);
+
+	string lines = "                                  -  ";
+	string nume = nod->team.getName();
+	lines.replace(0, nume.length(), nume);
+	rezultate << lines << fixed << setprecision(2) << nod->team.get_global_score() << "\n";
+	printTeams(nod->left, rezultate);
+
+}
+
+void BST::insert(Team team) {
+	insert(root, team);
+}
+
+void BST::printTeams(ofstream  &rezultate) {
+	rezultate << "\nTOP 8 TEAMS:\n";
+	printTeams(root, rezultate);
+}

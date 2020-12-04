@@ -125,13 +125,23 @@ int main(int argc, char *argv[]) {
 			count = 0;
 
 			// se pune stiva de castigatori iar in coada
-			while (!winners.isEmpty()) {
+			while ( !winners.isEmpty() ) {
 				pop_team = winners.pop();
 				enQueue(teamsQueue, pop_team);
 			}
 		}
 		//rez << "\n" << "TOP 8 TEAMS:" << "\n";
 		//winnerStack4.display(rez);
+	}
+
+	BST root = BST();
+
+	if ( sum >= 4 ) {
+		while ( !winnerStack4.isEmpty() ) {
+			pop_team = winnerStack4.pop();
+			root.insert(pop_team);
+		}
+		root.printTeams(rez);
 	}
 	
 

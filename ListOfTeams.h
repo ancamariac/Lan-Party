@@ -22,7 +22,6 @@ class ListOfTeams {
 
 		void addTeam(Team team);
 		void printTeamNames(ofstream  &rezultate);
-		void printReverseTeamNames(char *argv[]);
 		void removeTeam(string name);
 		void removeNodes();
 		Queue* TeamsQueue(Queue* queue); // metoda care pune echipele in coada

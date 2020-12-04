@@ -1,19 +1,30 @@
 #ifndef BST_H
 #define BST_H
-#include <string>
 #include <iostream>
 #include <fstream>
 #include "Team.h"
-#include "Queue.h"
+using namespace std;
 
-class BST {
-    Team team; 
-    BST *left, *right;
-
-    public:
-        BST(Team echipa);
-        BST* insert(BST* root, Team team);
-        void printBST(BST* root); 
+struct Node {
+	Node(Team value) : team(value), left(NULL), right(NULL) {}
+	Team team;
+	Node* left;
+	Node* right;
 };
 
-#endif
+class BST {
+private:
+	Node* root;
+	void insert(Node* nod, Team team);
+	void deleteBST(Node* nod);
+	void printTeams(Node* nod, ofstream  &rezultate);
+public:
+
+	BST();
+	~BST();
+
+	void insert(Team team);
+	void printTeams(ofstream  &rezultate);
+};
+
+#endif 

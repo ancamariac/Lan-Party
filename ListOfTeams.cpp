@@ -44,34 +44,14 @@ void ListOfTeams::addTeam(Team team) {
 
 void ListOfTeams::printTeamNames(ofstream  &rezultate) {
 
-	//ofstream rezultate(argv[3]);
-	// doubly
 	node* ptr;
    	ptr = head;
    	while(ptr != NULL) {
       	rezultate << ptr->team.getName() << "\n";// <<"   "<< fixed << setprecision(2) << ptr->team.initialScore()<<"\n";
       	ptr = ptr->next;
    	}
-   	//rezultate.close();
 }
 
-void ListOfTeams::printReverseTeamNames(char *argv[]) {
-    
-    ofstream rezultate(argv[3]);
-
-    tail = head; 
-
-    while (tail->next != NULL) { 
-        tail = tail->next; 
-    } 
-  
-    while (tail != head) { 
-        rezultate << tail->team.getName() << "\n"; 
-        tail = tail->prev; 
-    } 
-    rezultate << tail->team.getName() << "\n"; 
-    rezultate.close();
-} 
 
 // eliminare echipa din lista
 void ListOfTeams::removeTeam(string name) {
