@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include "Team.h"
+#include "AVL.h"
 using namespace std;
 
 struct Node {
@@ -18,6 +19,8 @@ private:
 	void insert(Node* nod, Team team);
 	void deleteBST(Node* nod);
 	void printTeams(Node* nod, ofstream  &rezultate);
+	void createAVL(Node* nod, AVL* avl);
+
 public:
 
 	BST();
@@ -25,6 +28,7 @@ public:
 
 	void insert(Team team);
 	void printTeams(ofstream  &rezultate);
+	void createAVL(AVL* avl);
 };
 
 #endif 

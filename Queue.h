@@ -15,11 +15,8 @@ class Queue {
         int size;      // current size of the queue
 }; 
 
-Queue* createQueue(int capac);     // constructor
-//~Queue();    // destructor
+Queue* createQueue(int capac);     
 
-//Queue* TeamsQueue(int nr_echipe, Team * echipe); // metoda care pune echipele in coada
-//void setCapac();  
 Team deQueue(Queue* queue);
 void enQueue(Queue* queue, Team t);
 int isEmpty(Queue* queue);

@@ -45,7 +45,6 @@ float Team::initialScore() {
 
 	float sum = 0;
 	float medie = 0;
-	//assert (head->next == NULL);
 
 	for (int i = 0; i < nr_players; i++) {
 		sum = sum + get_players(i)->getPoints();

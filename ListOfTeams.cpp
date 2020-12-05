@@ -47,7 +47,7 @@ void ListOfTeams::printTeamNames(ofstream  &rezultate) {
 	node* ptr;
    	ptr = head;
    	while(ptr != NULL) {
-      	rezultate << ptr->team.getName() << "\n";// <<"   "<< fixed << setprecision(2) << ptr->team.initialScore()<<"\n";
+      	rezultate << ptr->team.getName() << "\n";
       	ptr = ptr->next;
    	}
 }
@@ -67,7 +67,7 @@ void ListOfTeams::removeTeam(string name) {
 	node* aux = head->next;
 
     while ( aux != NULL ) {
-		//if (aux == NULL) break;
+		
 		if (aux->team.getName() == name) {
 			if (aux->prev != NULL) {
 				aux->prev->next = aux->next;

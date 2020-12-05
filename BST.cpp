@@ -3,6 +3,7 @@
 #include "BST.h"
 #include <fstream>
 #include "Team.h"
+#include "AVL.h"
 #include "utils.h"
 #include <string>
 #include <cstring>
@@ -80,6 +81,7 @@ void BST::printTeams(Node* nod, ofstream  &rezultate) {
 	string nume = nod->team.getName();
 	lines.replace(0, nume.length(), nume);
 	rezultate << lines << fixed << setprecision(2) << nod->team.get_global_score() << "\n";
+	// inserare nod in avl
 	printTeams(nod->left, rezultate);
 
 }
@@ -91,4 +93,16 @@ void BST::insert(Team team) {
 void BST::printTeams(ofstream  &rezultate) {
 	rezultate << "\nTOP 8 TEAMS:\n";
 	printTeams(root, rezultate);
+}
+
+void BST::createAVL(AVL* avl) {
+	createAVL(root, avl);
+}
+
+void BST::createAVL(Node *nod, AVL* avl) {
+	if (nod == NULL) return;
+	createAVL(nod->right, avl);
+	avl->insert(nod->team);
+	createAVL(nod->left, avl);
+
 }

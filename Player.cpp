@@ -3,9 +3,6 @@
 #include <string>
 #include "Player.h"
 
-// METODE
-
-
 Player::Player() {
 	this->firstName = "";
 	this->secondName = "";

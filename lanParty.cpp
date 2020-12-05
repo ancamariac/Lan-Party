@@ -9,7 +9,7 @@
 #include "Stack.h"
 #include "utils.h"
 #include "BST.h"
-// include .h uri
+#include "AVL.h"
 
 using namespace std;
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 			jucatori[i][j] = new Player(primul_nume, al_doilea_nume, puncte);
 		}
 		if (name_team[name_team.length() - 1] == ' ') {
-			//cout << name_team<<endl;
+			
 			name_team = name_team.substr(0, name_team.size() - 1);
 		}
 		// adaugare in lista de echipe a fiecarei echipe formate cu ajutorul constr. cu param
@@ -130,8 +130,6 @@ int main(int argc, char *argv[]) {
 				enQueue(teamsQueue, pop_team);
 			}
 		}
-		//rez << "\n" << "TOP 8 TEAMS:" << "\n";
-		//winnerStack4.display(rez);
 	}
 
 	BST root = BST();
@@ -143,16 +141,23 @@ int main(int argc, char *argv[]) {
 		}
 		root.printTeams(rez);
 	}
+
+	AVL* avl = new AVL();
+
+	if ( sum == 5 ) {
+		rez << "\n";
+		root.createAVL(avl);
+		avl->printAVL(rez);
+	}
 	
 
-	/*for (int i = 0; i < nr_echipe; i++) {
-		nr_jucatori = 5;
+	for (int i = 0; i < nr_echipe; i++) {
 		for (int j = 0; j < nr_jucatori; j++) {
 			delete jucatori[i][j];
 		}
 		delete[] jucatori[i];
 	}
-	delete[] jucatori;*/
+	delete[] jucatori;
 
 	data.close();
 	cerinte.close();

@@ -3,8 +3,6 @@
 #include <string>
 #include <fstream>
 
-
-// data de cerinta:
 class Player {
 private:
     std::string firstName;

@@ -19,21 +19,6 @@ Queue* createQueue(int capacity) {
     return queue; 
 } 
 
-/*Queue::~Queue() {
-    delete[] arrayOfTeams;
-}*/
-
-/*Queue* Queue::TeamsQueue(int nr_echipe, Team * echipe) {
-
-    Queue * coada = createQueue(nr_echipe);
-    for ( int i = 0; i < nr_echipe; i++ ) {
-        enQueue(coada, echipe[i]);
-    }
-
-    return coada;
-}*/
-
-
 Team deQueue(Queue* queue) { 
 
     if (isEmpty(queue)) {
@@ -57,7 +42,7 @@ void enQueue(Queue* queue, Team echipa) {
     }
     queue->rear = (queue->rear + 1) 
                   % queue->capacity; 
-    queue->arrayOfTeams[queue->rear] = echipa; //nu stiu daca pot face asta
+    queue->arrayOfTeams[queue->rear] = echipa; 
     queue->size = queue->size + 1; 
 } 
   
@@ -68,22 +53,16 @@ int isEmpty(Queue* queue) {
     return (queue->size == 0); 
 } 
 
-// Queue is full when size 
-// becomes equal to the capacity 
 int isFull(Queue* queue) { 
     return (queue->size == queue->capacity); 
 } 
 
-Team front(Queue* queue) { 
-    /*if (isEmpty(queue)) 
-        return INT_MIN;*/ 
+Team front(Queue* queue) {  
     return queue->arrayOfTeams[queue->front]; 
 } 
   
 // Function to get rear of queue 
 Team rear(Queue* queue) { 
-    /*if (isEmpty(queue)) 
-        return INT_MIN;*/ 
     return queue->arrayOfTeams[queue->rear]; 
 } 
  

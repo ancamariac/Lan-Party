@@ -26,10 +26,6 @@ void Stack::push(Team echipa) {
 
 Team Stack::pop() {
 
-    /*if ( top == NULL ) {
-        return;
-    }*/
-
     struct stackNode *newNode = new stackNode;
     newNode = top;
     top = top->next;
@@ -56,9 +52,6 @@ void Stack::display(ofstream& rezultate) {
         rezultate << s << fixed << setprecision(2) << temp->res_echipa.get_global_score() << "\n";
         temp = temp->next;
     }
-
-    //rezultate << "\n";
-
 }
 
 int Stack::isEmpty() {
