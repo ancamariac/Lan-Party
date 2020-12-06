@@ -1,8 +1,5 @@
 #ifndef LISTOFTEAMS_H
 #define LISTOFTEAMS_H
-#include <string>
-#include <iostream>
-#include <fstream>
 #include "Team.h"
 #include "Queue.h"
 using namespace std;

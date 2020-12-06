@@ -1,15 +1,4 @@
-#include <iostream>
-#include <iomanip>
-#include "AVL.h"
-#include "BST.h"
-#include <fstream>
-#include "Team.h"
 #include "utils.h"
-#include <string>
-#include <cstring>
-#include <vector>
-
-using namespace std;
 
 AVL::AVL() {
    root = NULL;

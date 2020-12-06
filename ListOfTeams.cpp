@@ -1,13 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "ListOfTeams.h"
-#include "Team.h"
-#include "Queue.h"
-#include <assert.h>
-#include <iomanip>
-
-using namespace std;
+#include "utils.h"
 
 ListOfTeams::ListOfTeams() {
 

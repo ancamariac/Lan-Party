@@ -1,15 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <cstring>
-#include <string>
-#include "Player.h"
-#include "ListOfTeams.h"
-#include "Team.h"
-#include "Queue.h"
-#include "Stack.h"
 #include "utils.h"
-#include "BST.h"
-#include "AVL.h"
 
 using namespace std;
 
@@ -113,7 +102,7 @@ int main(int argc, char *argv[]) {
 			winners.display(rez);
 
 			// se sterge stiva loosers 
-			while (!loosers.isEmpty()) {
+			while ( !loosers.isEmpty() ) {
 				loosers.pop();
 				count++;
 			}
@@ -150,6 +139,7 @@ int main(int argc, char *argv[]) {
 		avl->printAVL(rez);
 	}
 	
+	// Dezalocare memorie
 
 	for (int i = 0; i < nr_echipe; i++) {
 		for (int j = 0; j < nr_jucatori; j++) {

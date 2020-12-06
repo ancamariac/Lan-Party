@@ -1,11 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "Queue.h"
-#include "Team.h"
-#include <assert.h>
-
-using namespace std;
+#include "utils.h"
 
 Queue* createQueue(int capacity) { 
 

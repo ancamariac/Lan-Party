@@ -1,15 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "Stack.h"
-#include "Queue.h"
-#include "Team.h"
-#include <assert.h>
-#include <string>
-#include <cstring>
-#include <iomanip>
-
-using namespace std;
+#include "utils.h"
 
 Stack::Stack() {
     top = NULL;
