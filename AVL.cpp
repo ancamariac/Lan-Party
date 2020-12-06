@@ -28,8 +28,7 @@ void AVL::clearTree(AVLTreeNode *node) {
     }
 }
 
-int AVL::height(AVLTreeNode* N)
-{
+int AVL::height(AVLTreeNode* N) {
 	if (N == NULL)
 		return 0;
 	return N->height;
@@ -44,8 +43,7 @@ AVLTreeNode *createNewNode(Team team) {
 	return(node);
 } 
 
-AVLTreeNode* AVL::rightRotate(AVLTreeNode* y)
-{
+AVLTreeNode* AVL::rightRotate(AVLTreeNode* y) {
 	AVLTreeNode* x = y->left;
 	AVLTreeNode* T2 = x->right;
 
@@ -63,8 +61,7 @@ AVLTreeNode* AVL::rightRotate(AVLTreeNode* y)
 	return x;
 }
 
-AVLTreeNode* AVL::leftRotate(AVLTreeNode*x)
-{  
+AVLTreeNode* AVL::leftRotate(AVLTreeNode*x) {  
 	AVLTreeNode*y = x->right;
 	AVLTreeNode*T2 = y->left;
   
@@ -82,16 +79,14 @@ AVLTreeNode* AVL::leftRotate(AVLTreeNode*x)
     return y;  
 }
 
-int AVL::getBalance(AVLTreeNode* N)
-{
+int AVL::getBalance(AVLTreeNode* N) {
 	if (N == NULL)
 		return 0;
 	return height(N->left) - height(N->right);
 }
 
-AVLTreeNode* AVL::insert(AVLTreeNode* node, Team team)
-{
-	/* 1. Perform the normal BST insertion */
+AVLTreeNode* AVL::insert(AVLTreeNode* node, Team team) {
+
 	if (node == NULL) {
 		return(createNewNode(team));
 	}
@@ -111,17 +106,10 @@ AVLTreeNode* AVL::insert(AVLTreeNode* node, Team team)
 		}
 	}
 
-	/* 2. Update height of this ancestor node */
 	node->height = 1 + max(height(node->left),
 		height(node->right));
 
-	/* 3. Get the balance factor of this ancestor
-		node to check whether this node became
-		unbalanced */
 	int balance = getBalance(node);
-
-	// If this node becomes unbalanced, then  
-	// there are 4 cases  
 
 	// Left Left Case  
 	if (balance > 1 && team.get_global_score() <= node->left->team.get_global_score())
@@ -132,20 +120,16 @@ AVLTreeNode* AVL::insert(AVLTreeNode* node, Team team)
 		return leftRotate(node);
 
 	// Left Right Case  
-	if (balance > 1 && team.get_global_score() >= node->left->team.get_global_score())
-	{
+	if (balance > 1 && team.get_global_score() >= node->left->team.get_global_score()) {
 		node->left = leftRotate(node->left);
 		return rightRotate(node);
 	}
 
 	// Right Left Case  
-	if (balance < -1 && team.get_global_score() <= node->right->team.get_global_score())
-	{
+	if (balance < -1 && team.get_global_score() <= node->right->team.get_global_score()) {
 		node->right = rightRotate(node->right);
 		return leftRotate(node);
 	}
-
-	/* return the (unchanged) node pointer */
 	return node;
 }
 
@@ -156,19 +140,19 @@ void AVL::insert(Team team) {
 void AVL::printAVL(ofstream  &rezultate) {
 	Team team;
 	rezultate << "THE LEVEL 2 TEAMS ARE:" << endl;
-	if (root->right->right) {
+	if ( root->right->right ) {
 		team = root->right->right->team;
 		rezultate << team.getName() << endl;
 	}
-	if (root->right->left) {
+	if ( root->right->left ) {
 		team = root->right->left->team;
 		rezultate << team.getName() << endl;
 	}
-	if (root->left->right) {
+	if ( root->left->right ) {
 		team = root->left->right->team;
 		rezultate << team.getName() << endl;
 	}
-	if (root->left->left) {
+	if ( root->left->left ) {
 		team = root->left->left->team;
 		rezultate << team.getName() << endl;
 	}
